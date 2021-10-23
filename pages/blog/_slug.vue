@@ -38,6 +38,8 @@
             <p class="lead">{{ article.description }}</p>
             <p>
               <nuxt-content :document="article" />
+
+              <Social :social="article.social"></Social>
             </p>
           </div>
         </div>

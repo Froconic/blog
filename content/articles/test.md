@@ -26,4 +26,3 @@ Boop boop bow
 ## Second Heading
 Deep Yeet Yow
 
-<Social :social="social"></Social>
