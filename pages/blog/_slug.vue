@@ -40,6 +40,8 @@
               <nuxt-content :document="article" />
 
               <Social :social="article.social"></Social>
+              <!-- <Related :related="article.related" ></Related> -->
+              <PrevNext :prev="prev" :next="next"></PrevNext>
             </p>
           </div>
         </div>
@@ -56,8 +58,12 @@
     }) {
       const article = await $content('articles', params.slug).fetch()
 
+      const [prev, next] = await $content('articles').only(['title', 'slug']).sortBy(['createdAt', 'asc']).surround(params.slug).fetch()
+
       return {
-        article
+        article,
+        prev,
+        next
       }
     },
 
