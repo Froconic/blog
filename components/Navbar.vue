@@ -13,7 +13,7 @@
                 <li class="nav-item"><NuxtLink class="nav-link text-dark" to='/about'> About </NuxtLink></li>
                 <li class="nav-item"><NuxtLink class="nav-link text-dark" to='/contact'> Contact </NuxtLink></li>
                 <li class="nav-item"><NuxtLink class="nav-link text-dark" to='/support'> Support </NuxtLink></li>
-                <li class="nav-item"><button id="themeChanger" class="btn btn-primary nav-link text-dark">Theme</button></li>
+                <li class="nav-item pl-1"><Search></Search></li>
               </ul>
             </div>
           </div>

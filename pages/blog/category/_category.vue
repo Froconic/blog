@@ -11,7 +11,6 @@
         </div>
       </div>
     </section>
-    <!-- <h1>Category: {{ article.category }}</h1> -->
     <h4>Articles in this Category</h4>
     <div v-for="article of articles" :key="article.slug" class="col-md-6 col-lg-4">
       <NuxtLink class="card card-body justify-content-between" :to="{name: 'blog-slug', params: { slug: article.slug }}">

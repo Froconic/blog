@@ -16,6 +16,7 @@
     </section>
     <section class="bg-black blog-posts">
       <div class="container">
+        <Search></Search>
         <Category :category="category"></Category>
         <div class="row mb-4">
             <div v-for="article of articles" :key="article.slug" class="col-md-6 col-lg-4">
