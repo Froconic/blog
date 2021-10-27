@@ -1,4 +1,7 @@
 export default {
+  content: {
+    nestedProperties:['author.name']
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
