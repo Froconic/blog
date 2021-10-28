@@ -11,8 +11,13 @@
         </div>
       </div>
     </section>
-    <h4>Articles in this Category</h4>
-    <div v-for="article of articles" :key="article.slug" class="col-md-6 col-lg-4">
+    <section class="bg-black">
+      <div class="container">
+        <Search></Search>
+        <Category></Category>
+      </div>
+    <div class="row">
+    <div v-for="article of articles" :key="article.category" class="col-md-6 col-lg-4">
       <NuxtLink class="card card-body justify-content-between" :to="{name: 'blog-slug', params: { slug: article.slug }}">
         <div class="text-small d-flex">
           <div class="mr-2">
@@ -31,6 +36,8 @@
         </div>
       </NuxtLink>
     </div>
+    </div>
+    </section>
 
   </div>
 </template>
@@ -42,7 +49,7 @@
       params
     }) {
       const articles = await $content('articles', params.slug)
-        .where({category: {$regex: [params.category, 'i']}})
+        .where('article.category')
         .sortBy('createdAt', 'asc')
         .fetch()
 

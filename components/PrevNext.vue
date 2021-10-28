@@ -13,11 +13,11 @@
   export default {
 props: {
   prev: {
-    trpe: Object,
+    type: Object,
     default: () => null
   },
   next: {
-    trpe: Object,
+    type: Object,
     default: () => null
   }
 }

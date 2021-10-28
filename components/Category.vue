@@ -3,9 +3,9 @@
   <div class="row justify-content-center mb-4">
       <div class="nav mb-3 ">
         <ul class="list-unstyled">
-          <li class="nav-item">
+          <li v-for="article in articles" :key="article.category" class="nav-item">
         <NuxtLink class="nav-link" :to="'/blog/category/${article.category}'">
-        All
+        {{article.category}}
         </NuxtLink>
           </li>
         </ul>

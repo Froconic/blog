@@ -38,12 +38,9 @@
           <div class="col-xl-7 col-lg-8 col-md-10">
               <nuxt-content :document="article" />
 
-              <!-- <Author :author="article.author"></Author> -->
-
               <Social :social="article.social"></Social>
               <!-- <Related :related="article.related" ></Related> -->
               <PrevNext :prev="prev" :next="next"></PrevNext>
-            </p>
           </div>
         </div>
       </div>
