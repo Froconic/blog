@@ -9,16 +9,12 @@
         <div class="text-center text-small mb-4"> {{ formatDate(artwork.createdAt)}}</div>
       <div class="row">
         <div class="col">
-          <div class="container">
+          <div class="container mb-5">
             <img :src="artwork.img" :alt="artwork.alt">
           </div>
         </div>
       </div>
-          </div>
-          <div class="row">
-            <div class="col">
       <ArtPrevNext :prev="prev" :next="next" ></ArtPrevNext>
-            </div>
           </div>
         </div>
       <Social :social="artwork.social"></Social>

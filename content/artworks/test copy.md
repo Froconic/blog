@@ -2,7 +2,7 @@
 title: Art Post 2
 description: Arrt test Maiores asperiores officia alias mollitia. Sit dolore consequatur quam provident aut harum. boi
 img: /img/art/GBO.svg
-cover: /img/GBO.svg
+cover: /img/art/GBO.svg
 alt: Test Post
 avatar: /img/male-1.jpg
 avatarAlt: Avatar here

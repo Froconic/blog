@@ -17,63 +17,15 @@
       <div class="container">
         <div class="row justify-content-center mb-4">
           <div class="col col-md-auto">
-            <ul data-isotope-filters data-isotope-id="projects" class="nav mb-3">
-              <li class="nav-item">
-                <NuxtLink to='/' class="nav-link active" data-filter="*">All</NuxtLink>
-              </li>
-              <li class="nav-item">
-              <NuxtLink to='/' class="nav-link" data-filter="Branding">Branding</NuxtLink>
-              </li>
-              <li class="nav-item">
-                <NuxtLink to='/' class="nav-link" data-filter="Digital">Digital</NuxtLink>
-              </li>
-              <li class="nav-item">
-                <NuxtLink to='/' class="nav-link" data-filter="Art Direction">Art Direction</NuxtLink>
-              </li>
-            </ul>
+            <Search></Search>
+
           </div>
         </div>
-        <div class="row" data-isotope-collection data-isotope-id="projects">
-          <div class="col-sm-6 col-lg-4 mb-4" data-isotope-item data-category="Branding">
-            <NuxtLink to='/'>
-              <img src="../assets/img/portfolio-item-6.jpg" alt="Volkswagen Australia" class="rounded mb-3">
-              <h4 class="mb-1">Volkswagen Australia</h4>
-              <div class="text-small text-muted">Branding</div>
-            </NuxtLink>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-isotope-item data-category="Art Direction">
-            <NuxtLink to='/'>
-              <img src="../assets/img/portfolio-item-5.jpg" alt="Go Commerce" class="rounded mb-3">
-              <h4 class="mb-1">Go Commerce</h4>
-              <div class="text-small text-muted">Art Direction</div>
-            </NuxtLink>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-isotope-item data-category="Digital">
-            <NuxtLink to='/'>
-              <img src="../assets/img/portfolio-item-4.jpg" alt="Tribe" class="rounded mb-3">
-              <h4 class="mb-1">Tribe</h4>
-              <div class="text-small text-muted">Digital</div>
-            </NuxtLink>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-isotope-item data-category="Art Direction">
-            <NuxtLink to='/'>
-              <img src="../assets/img/portfolio-item-3.jpg" alt="Beker EV" class="rounded mb-3">
-              <h4 class="mb-1">Beker EV</h4>
-              <div class="text-small text-muted">Art Direction</div>
-            </NuxtLink>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-isotope-item data-category="Branding">
-            <NuxtLink to='/'>
-              <img src="../assets/img/portfolio-item-2.jpg" alt="Oculus Go" class="rounded mb-3">
-              <h4 class="mb-1">Oculus Go</h4>
-              <div class="text-small text-muted">Branding</div>
-            </NuxtLink>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-4" data-isotope-item data-category="Digital">
-            <NuxtLink to='/'>
-              <img src="../assets/img/portfolio-item-1.jpg" alt="Leap iOS" class="rounded mb-3">
-              <h4 class="mb-1">Leap iOS</h4>
-              <div class="text-small text-muted">Digital</div>
+        <div class="row">
+          <div v-for="artwork of artworks" :key="artwork.slug" class="col-sm-6 col-lg-4 mb-4">
+            <NuxtLink :to="{name:'art-slug',params: { slug: artwork.slug }} ">
+              <img :src="artwork.img" :alt="artwork.alt" class="rounded mb-3">
+              <h4 class="mb-1"> {{artwork.title}} </h4>
             </NuxtLink>
           </div>
         </div>
@@ -83,6 +35,28 @@
 </template>
 
 <script>
+  export default {
+    async asyncData({
+      $content,
+      params
+    }) {
+      const artworks = await $content ('artworks').only(['title', 'description', 'category', 'img', 'cover', 'slug', 'createdAt']).sortBy('createdAt', 'asc').fetch()
+
+      return {
+        artworks
+      }
+    },
+    methods: {
+      formatDate(date) {
+        const options = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+        return new Date(date).toLocaleDateString('en', options)
+      }
+    },
+}
 
 </script>
 
